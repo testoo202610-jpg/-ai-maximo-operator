@@ -1,0 +1,1 @@
+CREATE TABLE color_mappings(record_type TEXT NOT NULL,record_id TEXT NOT NULL,site_id TEXT NOT NULL,color TEXT NOT NULL,source TEXT NOT NULL,confirmed_by TEXT REFERENCES users(id),confirmed_at TEXT NOT NULL,PRIMARY KEY(record_type,record_id,site_id));

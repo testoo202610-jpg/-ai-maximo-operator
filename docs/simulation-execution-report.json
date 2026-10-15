@@ -1,0 +1,99 @@
+{
+  "job": {
+    "id": "3fbbb1b4-b0b7-44c1-aaa4-4c6258b17ba4",
+    "approval_id": "f125efe3-ed5a-4a05-aeb9-4d94b531e2e3",
+    "status": "COMPLETED",
+    "stop_requested": 0,
+    "created_at": "2026-10-15T03:43:22.125Z",
+    "updated_at": "2026-10-15T03:43:49.479Z",
+    "error": null,
+    "lease_owner": null,
+    "lease_until": null,
+    "requested_by": "supervisor"
+  },
+  "steps": [
+    {
+      "id": "d3713358-e89f-4ef0-86fa-ab2a8ee0a006",
+      "job_id": "3fbbb1b4-b0b7-44c1-aaa4-4c6258b17ba4",
+      "change_key": "WO:HARAM:WO-2015",
+      "status": "VERIFIED",
+      "attempts": 1,
+      "data": {
+        "key": "WO:HARAM:WO-2015",
+        "identity": {
+          "type": "WO",
+          "id": "WO-2015",
+          "siteId": "HARAM"
+        },
+        "description": "MATAF — فحص وصيانة دورية",
+        "revision": "1",
+        "before": {
+          "scheduledStart": null,
+          "scheduledFinish": null,
+          "laborId": null
+        },
+        "after": {
+          "scheduledStart": "2026-10-15T21:00:00.000Z",
+          "scheduledFinish": "2026-10-15T21:15:00.000Z",
+          "laborId": "L-02"
+        },
+        "reason": "15 min; editable planning estimate; priority 1; shift 3",
+        "conflicts": [],
+        "pmImpact": "WO schedule only. PM frequency, next due date and generation settings remain unchanged."
+      },
+      "result": {
+        "actual": {
+          "scheduledStart": "2026-10-15T21:00:00.000Z",
+          "scheduledFinish": "2026-10-15T21:15:00.000Z",
+          "laborId": "L-02"
+        },
+        "revision": "2",
+        "reconciled": false
+      }
+    },
+    {
+      "id": "a1bbf6bb-3401-4655-8a39-3169a2a7acd4",
+      "job_id": "3fbbb1b4-b0b7-44c1-aaa4-4c6258b17ba4",
+      "change_key": "WO:HARAM:WO-2010",
+      "status": "VERIFIED",
+      "attempts": 1,
+      "data": {
+        "key": "WO:HARAM:WO-2010",
+        "identity": {
+          "type": "WO",
+          "id": "WO-2010",
+          "siteId": "HARAM"
+        },
+        "description": "MATAF — Preventive equipment inspection",
+        "revision": "1",
+        "before": {
+          "scheduledStart": null,
+          "scheduledFinish": null,
+          "laborId": null
+        },
+        "after": {
+          "scheduledStart": "2026-10-16T21:00:00.000Z",
+          "scheduledFinish": "2026-10-16T21:15:00.000Z",
+          "laborId": "L-02"
+        },
+        "reason": "15 min; editable planning estimate; priority 1; shift 3",
+        "conflicts": [],
+        "pmImpact": "WO schedule only. PM frequency, next due date and generation settings remain unchanged."
+      },
+      "result": {
+        "actual": {
+          "scheduledStart": "2026-10-16T21:00:00.000Z",
+          "scheduledFinish": "2026-10-16T21:15:00.000Z",
+          "laborId": "L-02"
+        },
+        "revision": "2",
+        "reconciled": false
+      }
+    }
+  ],
+  "summary": {
+    "VERIFIED": 2
+  },
+  "mode": "simulation",
+  "liveVerified": false
+}
