@@ -1,0 +1,53 @@
+x-operator: &operator
+  build: .
+  environment: &environment
+    HOST: 0.0.0.0
+    NODE_ENV: production
+    APP_ORIGIN: http://127.0.0.1:3001
+    MAXIMO_MODE: simulation
+    MAXIMO_CONNECTOR_MODE: browser
+    MAXIMO_READ_ONLY: "false"
+    MAXIMO_PRODUCTION_WRITE_ENABLED: "false"
+    DATABASE_URL: /data/operator/operator.sqlite
+    SIMULATOR_DATABASE_URL: /data/simulator/simulator.sqlite
+    SIMULATOR_BASE_URL: http://simulator:3002
+    OPTIMIZER_URL: http://optimizer:8000
+  volumes:
+    - operator-data:/data/operator
+  init: true
+services:
+  simulator:
+    <<: *operator
+    command: ["npm", "run", "simulator"]
+    volumes:
+      - simulator-data:/data/simulator
+    ports: ["127.0.0.1:3002:3002"]
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3002/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+  api:
+    <<: *operator
+    command: ["npm", "run", "api"]
+    ports: ["127.0.0.1:3001:3001"]
+    depends_on:
+      simulator: { condition: service_healthy }
+  runner:
+    <<: *operator
+    command: ["npm", "run", "runner"]
+    depends_on:
+      simulator: { condition: service_healthy }
+      api: { condition: service_started }
+  optimizer:
+    build: services/scheduling-optimizer
+    init: true
+volumes:
+  operator-data:
+  simulator-data:

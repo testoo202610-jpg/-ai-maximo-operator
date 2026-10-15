@@ -1,0 +1,60 @@
+{
+  "name": "ai-maximo-operator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "tsx scripts/dev.ts",
+    "start": "NODE_ENV=production tsx scripts/dev.ts",
+    "api": "tsx apps/api/server.ts",
+    "runner": "tsx apps/operator-runner/main.ts",
+    "simulator": "tsx apps/simulator/server.ts",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "db:seed": "tsx scripts/seed.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "build": "vite build --config apps/web/vite.config.ts",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build",
+    "browser:login": "tsx scripts/browser-login.ts",
+    "format": "prettier --write apps packages scripts tests *.ts *.js *.json *.md .github/workflows/*.yml compose.yaml"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.0",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tailwindcss/vite": "^4.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.2.0",
+    "hono": "^4.10.0",
+    "lucide-react": "^0.468.0",
+    "playwright": "^1.55.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwind-merge": "^3.3.0",
+    "tailwindcss": "^4.1.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.9.10",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^7.1.0",
+    "vitest": "^3.2.0"
+  }
+}

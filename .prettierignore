@@ -1,0 +1,9 @@
+node_modules
+data
+dist
+.env
+.venv
+.auth
+package-lock.json
+playwright-report
+test-results
